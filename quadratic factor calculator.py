@@ -8,6 +8,23 @@ addValue = bValue
 factor1 = 0
 factor2 = 0
 guesses = 0
+multiple = 0
+if abs(aValue) < abs(bValue) and abs(aValue) < abs(cValue) :
+    divisor = abs(aValue)
+if abs(bValue) < abs(aValue) and abs(bValue) < abs(cValue) :
+    divisor = abs(bValue)
+if abs(cValue) < abs(aValue) and abs(cValue) < abs(bValue) :
+    divisor = abs(cValue)
+while divisor > 0:
+    if aValue%divisor == 0 and bValue%divisor == 0 and cValue%divisor == 0:
+        multiple = divisor
+        break
+    else:
+        divisor -= 1
+if multiple > 1:
+    multiple = str(multiple)
+else:
+    multiple = ''
 while True:
     if factor1 + factor2 == addValue and factor1 * factor2 == multValue:
         break
@@ -44,8 +61,7 @@ if factor2 < 0:
     neg2 = ''
 else:
     neg2 = '+'
-print('(' + str(int(aValue/factor1Gcf)) + 'x' + neg + str(int(factor1/factor1Gcf)) + ')' + '(' + str(int(aValue/factor2Gcf)) + 'x' + neg2 + str(int(factor2/factor2Gcf)) + ')')
-print('number of guesses: ' + str(guesses))
+print(multiple + '(' + str(int(aValue/factor1Gcf)) + 'x' + neg + str(int(factor1/factor1Gcf)) + ')' + '(' + str(int(aValue/factor2Gcf)) + 'x' + neg2 + str(int(factor2/factor2Gcf)) + ')')
 
 
     
