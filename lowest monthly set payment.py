@@ -21,7 +21,9 @@ while True:
             mpub = lmp
         elif bal > 0:
             mplb = lmp
+lmp = round(lmp,2)
 print('Lowest Payment: ' + str(lmp))
+
 
 
     
