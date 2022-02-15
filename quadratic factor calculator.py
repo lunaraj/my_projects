@@ -1,5 +1,4 @@
 import random
-import time
 aValue = int(input('what is your a value '))
 bValue = int(input('what is your b value '))
 cValue = int(input('what is your c value '))
@@ -38,7 +37,7 @@ while True:
         guesses += 1
     if guesses > 1000000:
         print('there are no integer values')
-        time.sleep(100)
+        quit()
 divisor = aValue
 while divisor > 0:
     if aValue%divisor == 0 and factor1%divisor == 0:
