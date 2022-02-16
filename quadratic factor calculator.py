@@ -1,7 +1,14 @@
 import random
+import sys
 aValue = int(input('what is your a value '))
 bValue = int(input('what is your b value '))
 cValue = int(input('what is your c value '))
+bozo = ''
+if aValue < 0:
+    aValue = -aValue
+    bValue = -bValue
+    cValue = -cValue
+    bozo = '-'
 multValue = aValue * cValue
 addValue = bValue
 factor1 = 0
@@ -36,8 +43,7 @@ while True:
         factor2 = random.randint(-multValue-1, multValue+1)
         guesses += 1
     if guesses > 1000000:
-        print('there are no integer values')
-        quit()
+        sys.exit('there are no integer values')
 divisor = aValue
 while divisor > 0:
     if aValue%divisor == 0 and factor1%divisor == 0:
@@ -60,7 +66,13 @@ if factor2 < 0:
     neg2 = ''
 else:
     neg2 = '+'
-print(multiple + '(' + str(int(aValue/factor1Gcf)) + 'x' + neg + str(int(factor1/factor1Gcf)) + ')' + '(' + str(int(aValue/factor2Gcf)) + 'x' + neg2 + str(int(factor2/factor2Gcf)) + ')')
+aValue2 = str(int(aValue/factor1Gcf))
+aValue3 = str(int(aValue/factor2Gcf))
+if aValue3 == '1':
+    aValue3 = ''
+if aValue2 == '1':
+    aValue2 = ''
+print(bozo + multiple + '(' + aValue2 + 'x' + neg + str(int(factor1/factor1Gcf)) + ')' + '(' + aValue3 + 'x' + neg2 + str(int(factor2/factor2Gcf)) + ')')
 
 
     
