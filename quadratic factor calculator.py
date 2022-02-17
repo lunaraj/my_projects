@@ -48,7 +48,6 @@ while True:
         guesses += 1
     if guesses > 100000:
         sys.exit('there are no integer values')
-print(guesses)
 divisor = aValue
 while divisor > 0:
     if aValue%divisor == 0 and factor1%divisor == 0:
@@ -78,6 +77,4 @@ if aValue3 == '1':
 if aValue2 == '1':
     aValue2 = ''
 print(bozo + multiple + '(' + aValue2 + 'x' + neg + str(int(factor1/factor1Gcf)) + ')' + '(' + aValue3 + 'x' + neg2 + str(int(factor2/factor2Gcf)) + ')')
-
-
-    
+print('number of guesses: ' + str(guesses))
