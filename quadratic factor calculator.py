@@ -32,13 +32,14 @@ if multiple > 1:
 else:
     multiple = ''
 factorMult = []
-divisor = multValue
+divisor = abs(multValue)
 while divisor > 0:
     if multValue%divisor == 0:
         factorMult.append(divisor)
         factorMult.append(-divisor)
     divisor -= 1
 length = len(factorMult)
+print(factorMult)
 while True:
     if factor1 + factor2 == addValue and factor1 * factor2 == multValue:
         break
@@ -46,7 +47,7 @@ while True:
         factor1 = factorMult[random.randint(0,length-1)]
         factor2 = factorMult[random.randint(0,length-1)]
         guesses += 1
-    if guesses > 100000:
+    if guesses > multValue*1000:
         sys.exit('there are no integer values')
 divisor = aValue
 while divisor > 0:
