@@ -15,11 +15,11 @@ factor1 = 0
 factor2 = 0
 guesses = 0
 multiple = 0
-if abs(aValue) < abs(bValue) and abs(aValue) < abs(cValue) :
+if abs(aValue) <= abs(bValue) and abs(aValue) <= abs(cValue) :
     divisor = abs(aValue)
-if abs(bValue) < abs(aValue) and abs(bValue) < abs(cValue) :
+if abs(bValue) <= abs(aValue) and abs(bValue) <= abs(cValue) :
     divisor = abs(bValue)
-if abs(cValue) < abs(aValue) and abs(cValue) < abs(bValue) :
+if abs(cValue) <= abs(aValue) and abs(cValue) <= abs(bValue) :
     divisor = abs(cValue)
 while divisor > 0:
     if aValue%divisor == 0 and bValue%divisor == 0 and cValue%divisor == 0:
@@ -31,19 +31,24 @@ if multiple > 1:
     multiple = str(multiple)
 else:
     multiple = ''
+factorMult = []
+divisor = multValue
+while divisor > 0:
+    if multValue%divisor == 0:
+        factorMult.append(divisor)
+        factorMult.append(-divisor)
+    divisor -= 1
+length = len(factorMult)
 while True:
     if factor1 + factor2 == addValue and factor1 * factor2 == multValue:
         break
-    elif multValue < 0:
-        factor1 = random.randint(multValue-1, -multValue+1)
-        factor2 = random.randint(multValue-1, -multValue+1)
-        guesses+= 1
-    elif multValue > 0:
-        factor1 = random.randint(-multValue-1, multValue+1)
-        factor2 = random.randint(-multValue-1, multValue+1)
+    else:
+        factor1 = factorMult[random.randint(0,length-1)]
+        factor2 = factorMult[random.randint(0,length-1)]
         guesses += 1
-    if guesses > 1000000:
+    if guesses > 100000:
         sys.exit('there are no integer values')
+print(guesses)
 divisor = aValue
 while divisor > 0:
     if aValue%divisor == 0 and factor1%divisor == 0:
