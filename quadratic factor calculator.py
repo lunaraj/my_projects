@@ -3,6 +3,7 @@ import sys
 aValue = int(input('what is your a value '))
 bValue = int(input('what is your b value '))
 cValue = int(input('what is your c value '))
+var = input('what is your variable')
 bozo = ''
 if aValue < 0:
     aValue = -aValue
@@ -39,7 +40,6 @@ while divisor > 0:
         factorMult.append(-divisor)
     divisor -= 1
 length = len(factorMult)
-print(factorMult)
 while True:
     if factor1 + factor2 == addValue and factor1 * factor2 == multValue:
         break
@@ -47,7 +47,7 @@ while True:
         factor1 = factorMult[random.randint(0,length-1)]
         factor2 = factorMult[random.randint(0,length-1)]
         guesses += 1
-    if guesses > multValue*1000:
+    if guesses > abs(multValue*100):
         sys.exit('there are no integer values')
 divisor = aValue
 while divisor > 0:
@@ -77,5 +77,5 @@ if aValue3 == '1':
     aValue3 = ''
 if aValue2 == '1':
     aValue2 = ''
-print(bozo + multiple + '(' + aValue2 + 'x' + neg + str(int(factor1/factor1Gcf)) + ')' + '(' + aValue3 + 'x' + neg2 + str(int(factor2/factor2Gcf)) + ')')
+print(bozo + multiple + '(' + aValue2 + var + neg + str(int(factor1/factor1Gcf)) + ')' + '(' + aValue3 + var + neg2 + str(int(factor2/factor2Gcf)) + ')')
 print('number of guesses: ' + str(guesses))
