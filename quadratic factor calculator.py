@@ -3,7 +3,7 @@ import sys
 aValue = int(input('what is your a value '))
 bValue = int(input('what is your b value '))
 cValue = int(input('what is your c value '))
-var = input('what is your variable')
+var = input('what is your variable ')
 bozo = ''
 if aValue < 0:
     aValue = -aValue
@@ -16,12 +16,18 @@ factor1 = 0
 factor2 = 0
 guesses = 0
 multiple = 0
-if abs(aValue) <= abs(bValue) and abs(aValue) <= abs(cValue) :
-    divisor = abs(aValue)
-if abs(bValue) <= abs(aValue) and abs(bValue) <= abs(cValue) :
-    divisor = abs(bValue)
-if abs(cValue) <= abs(aValue) and abs(cValue) <= abs(bValue) :
-    divisor = abs(cValue)
+if bValue == 0:
+    if abs(aValue) <= abs(cValue):
+        divisor = abs(aValue)
+    elif abs(cValue) < abs(aValue):
+        divisor = abs(cValue)
+else: 
+    if abs(aValue) <= abs(bValue) and abs(aValue) <= abs(cValue) :
+        divisor = abs(aValue)
+    if abs(bValue) <= abs(aValue) and abs(bValue) <= abs(cValue) :
+        divisor = abs(bValue)
+    if abs(cValue) <= abs(aValue) and abs(cValue) <= abs(bValue) :
+        divisor = abs(cValue)
 while divisor > 0:
     if aValue%divisor == 0 and bValue%divisor == 0 and cValue%divisor == 0:
         multiple = divisor
