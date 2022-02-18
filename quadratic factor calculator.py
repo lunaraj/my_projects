@@ -2,17 +2,20 @@ import random
 import sys
 def quadratics(aValue, bValue, cValue, var):   
     bozo = ''
+    #if aValue is negative it factors out negative 1
     if aValue < 0:
         aValue = -aValue
         bValue = -bValue
         cValue = -cValue
         bozo = '-'
+    #the factors will multiply to multValue and add to addValue
     multValue = aValue * cValue
     addValue = bValue
     factor1 = 0
     factor2 = 0
     guesses = 0
     multiple = 0
+    #finds the smallest number of a, b, and c value so can find the gcf of all three later. if difference of squares it doesn't count the bValue
     if bValue == 0:
         if abs(aValue) <= abs(cValue):
             divisor = abs(aValue)
@@ -25,6 +28,7 @@ def quadratics(aValue, bValue, cValue, var):
             divisor = abs(bValue)
         if abs(cValue) <= abs(aValue) and abs(cValue) <= abs(bValue):
             divisor = abs(cValue)
+    #factors out greatest common factor
     while divisor > 0:
         if aValue%divisor == 0 and bValue%divisor == 0 and cValue%divisor == 0:
             multiple = divisor
@@ -35,6 +39,7 @@ def quadratics(aValue, bValue, cValue, var):
         multiple = str(multiple)
     else:
         multiple = ''
+    #adds factors of multValue to list
     factorMult = []
     divisor = abs(multValue)
     while divisor > 0:
@@ -43,6 +48,7 @@ def quadratics(aValue, bValue, cValue, var):
             factorMult.append(-divisor)
         divisor -= 1
     length = len(factorMult)
+    #finds the factors that will work
     while True:
         if factor1 + factor2 == addValue and factor1 * factor2 == multValue:
             break
@@ -52,6 +58,7 @@ def quadratics(aValue, bValue, cValue, var):
             guesses += 1
         if guesses > abs(multValue*100):
             sys.exit('there are no integer values')
+    #uses x method to divide factors
     divisor = aValue
     while divisor > 0:
         if aValue%divisor == 0 and factor1%divisor == 0:
