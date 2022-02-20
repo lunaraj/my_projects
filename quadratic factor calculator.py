@@ -1,6 +1,6 @@
 import random
-import sys
-def quadratics(aValue, bValue, cValue, var):   
+import math
+def factor(aValue, bValue, cValue, var):   
     bozo = ''
     #if aValue is negative it factors out negative 1
     if aValue < 0:
@@ -57,7 +57,8 @@ def quadratics(aValue, bValue, cValue, var):
             factor2 = factorMult[random.randint(0,length-1)]
             guesses += 1
         if guesses > abs(multValue*100):
-            sys.exit('there are no integer values')
+            print('cannot be factored')
+            return True
     #uses x method to divide factors
     divisor = aValue
     while divisor > 0:
@@ -83,13 +84,29 @@ def quadratics(aValue, bValue, cValue, var):
         neg2 = '+'
     aValue2 = str(int(aValue/factor1Gcf))
     aValue3 = str(int(aValue/factor2Gcf))
+    aValue4 = int(aValue2)
+    aValue5 = int(aValue3)
     if aValue3 == '1':
         aValue3 = ''
     if aValue2 == '1':
         aValue2 = ''
-    print(bozo + multiple + '(' + aValue2 + var + neg + str(int(factor1/factor1Gcf)) + ')' + '(' + aValue3 + var + neg2 + str(int(factor2/factor2Gcf)) + ')')
+    firstFactor = int(factor1/factor1Gcf)
+    secondFactor = int(factor2/factor2Gcf)
+    print('factored form : ' + bozo + multiple + '(' + aValue2 + var + neg + str(firstFactor) + ')' + '(' + aValue3 + var + neg2 + str(secondFactor) + ')')
+    def gcfDivide(factor, aValue):
+        gcf = math.gcd(abs(factor), aValue)
+        factor = factor/gcf
+        aValue = aValue/gcf
+        if aValue == 1:
+            return int(-factor)
+        else:
+            return str(int(-factor)) + '/' + str(int(aValue))
+    root1 = gcfDivide(firstFactor, aValue4)
+    root2 = gcfDivide(secondFactor, aValue5)
+    print('roots are ' + str(root1) + ' and ' + str(root2))
+    return False
 aValue = int(input('what is your a value '))
 bValue = int(input('what is your b value '))
 cValue = int(input('what is your c value '))
 var = input('what is your variable ')
-quadratics(aValue, bValue, cValue, var)
+quadraticEquation = factor(aValue, bValue, cValue, var)
