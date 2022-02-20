@@ -1,5 +1,6 @@
 import random
 import math
+import time
 def factor(aValue, bValue, cValue, var):   
     bozo = ''
     #if aValue is negative it factors out negative 1
@@ -92,7 +93,7 @@ def factor(aValue, bValue, cValue, var):
         aValue2 = ''
     firstFactor = int(factor1/factor1Gcf)
     secondFactor = int(factor2/factor2Gcf)
-    print('factored form : ' + bozo + multiple + '(' + aValue2 + var + neg + str(firstFactor) + ')' + '(' + aValue3 + var + neg2 + str(secondFactor) + ')')
+    print('\n\n\nfactored form: ' + bozo + multiple + '(' + aValue2 + var + neg + str(firstFactor) + ')' + '(' + aValue3 + var + neg2 + str(secondFactor) + ')')
     def gcfDivide(factor, aValue):
         gcf = math.gcd(abs(factor), aValue)
         factor = factor/gcf
@@ -103,10 +104,23 @@ def factor(aValue, bValue, cValue, var):
             return str(int(-factor)) + '/' + str(int(aValue))
     root1 = gcfDivide(firstFactor, aValue4)
     root2 = gcfDivide(secondFactor, aValue5)
-    print('roots are ' + str(root1) + ' and ' + str(root2))
+    print('roots: ' + str(root1) + ' and ' + str(root2))
     return False
 aValue = int(input('what is your a value '))
 bValue = int(input('what is your b value '))
 cValue = int(input('what is your c value '))
 var = input('what is your variable ')
 quadraticEquation = factor(aValue, bValue, cValue, var)
+if quadraticEquation:
+    def findDiscrimint(a, b, c):
+        dis = b**2-(4*a*c)
+        if dis < 0:
+            return False
+        sqrt = math.sqrt(dis)
+        if sqrt.is_integer() == True:
+            return int(sqrt)
+        else:
+            return 'sqrt(' + str(dis) + ')'
+    discriminint = findDiscrimint(aValue, bValue, cValue)
+            
+        
