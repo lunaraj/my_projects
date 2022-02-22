@@ -1,6 +1,5 @@
 import random
 import math
-import time
 def factor(aValue, bValue, cValue, var):   
     bozo = ''
     #if aValue is negative it factors out negative 1
@@ -120,7 +119,12 @@ if quadraticEquation:
         if sqrt.is_integer() == True:
             return int(sqrt)
         else:
-            return 'sqrt(' + str(dis) + ')'
+            return (dis, True)
     discriminint = findDiscrimint(aValue, bValue, cValue)
+    if type(discriminint) is tuple:
+        isRadical = True
+        radical = discriminint[0]
+    else:
+        isRadical = False
             
         
