@@ -116,18 +116,23 @@ if quadraticEquation:
         dis = b**2-(4*a*c)
         if dis < 0:
             return False
-        sqrt = math.sqrt(dis)
-        if sqrt.is_integer() == True:
-            return int(sqrt)
         else:
-            return (dis, True)
+            return dis
     discriminant = finddiscriminant(aValue, bValue, cValue)
     if discriminant == False:
         sys.exit('no solutions')
-    if type(discriminant) is tuple:
-        isRadical = True
-        radical = discriminant[0]
-    else:
-        isRadical = False
-            
+    squareList = []
+    count = 1
+    while count**2 < discriminant:
+        squareList.append(count**2)
+        count += 1
+    for i in range(len(squareList)):
+        if (discriminant/squareList[i]).is_integer() == True:
+            squareFactor = squareList[i]
+    if squareFactor == 1 and not aValue == 1:
+        print('roots: ' + '(' + str(-bValue) + ' - ' + 'sqrt' + str(discriminant) + ')/' + str(aValue))
+        print('roots: ' + '(' + str(-bValue) + ' + ' + 'sqrt' + str(discriminant) + ')/' + str(aValue))
+    elif not squareFactor == 1:
+        print('roots: '  + str(-bValue) + ' - ' + 'sqrt' + str(discriminant))
+        print('roots: '  + str(-bValue) + ' + ' + 'sqrt' + str(discriminant))
         
