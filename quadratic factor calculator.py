@@ -121,7 +121,6 @@ if isUnFactorable:
     discriminant = finddiscriminant(aValue, bValue, cValue)
     if discriminant == False:
         sys.exit('no solutions')
-    print(discriminant)
     def simplifyDiscriminant(a, b, dis):
         squareList = [1]
         squareFactors = []
@@ -136,4 +135,7 @@ if isUnFactorable:
         newDis = dis/max(squareFactors)
         return (int(math.sqrt(max(squareFactors))), int(newDis))
     newDis = simplifyDiscriminant(aValue, bValue, discriminant)
+    gcf = math.gcd((2*aValue), bValue, newDis[0])
+    if (2*aValue)/gcf > 0:
+        print('root 1: ' + '(' + str(int(-bValue/gcf)) + ' - ' + str(int(newDis[0]/gcf)) + '*sqrt' + str(int(newDis[1])) + ')/' + str(int((2*aValue)/gcf)))
         
