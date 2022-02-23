@@ -110,8 +110,8 @@ aValue = int(input('what is your a value '))
 bValue = int(input('what is your b value '))
 cValue = int(input('what is your c value '))
 var = input('what is your variable ')
-quadraticEquation = factor(aValue, bValue, cValue, var)
-if quadraticEquation:
+isUnFactorable = factor(aValue, bValue, cValue, var)
+if isUnFactorable:
     def finddiscriminant(a, b, c):
         dis = b**2-(4*a*c)
         if dis < 0:
@@ -121,18 +121,19 @@ if quadraticEquation:
     discriminant = finddiscriminant(aValue, bValue, cValue)
     if discriminant == False:
         sys.exit('no solutions')
-    squareList = []
-    count = 1
-    while count**2 < discriminant:
-        squareList.append(count**2)
-        count += 1
-    for i in range(len(squareList)):
-        if (discriminant/squareList[i]).is_integer() == True:
-            squareFactor = squareList[i]
-    if squareFactor == 1 and not aValue == 1:
-        print('roots: ' + '(' + str(-bValue) + ' - ' + 'sqrt' + str(discriminant) + ')/' + str(aValue))
-        print('roots: ' + '(' + str(-bValue) + ' + ' + 'sqrt' + str(discriminant) + ')/' + str(aValue))
-    elif not squareFactor == 1:
-        print('roots: '  + str(-bValue) + ' - ' + 'sqrt' + str(discriminant))
-        print('roots: '  + str(-bValue) + ' + ' + 'sqrt' + str(discriminant))
+    print(discriminant)
+    def simplifyDiscriminant(a, b, dis):
+        squareList = [1]
+        squareFactors = []
+        mult = 1
+        while max(squareList) < dis:
+            squareList.append(mult**2)
+            mult += 1
+        for i in squareList:
+            if dis%i == 0:
+                squareFactors.append(i)
+        del(squareFactors[0])
+        newDis = dis/max(squareFactors)
+        return (int(math.sqrt(max(squareFactors))), int(newDis))
+    newDis = simplifyDiscriminant(aValue, bValue, discriminant)
         
