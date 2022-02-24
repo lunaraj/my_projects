@@ -136,6 +136,14 @@ if isUnFactorable:
         return (int(math.sqrt(max(squareFactors))), int(newDis))
     newDis = simplifyDiscriminant(aValue, bValue, discriminant)
     gcf = math.gcd((2*aValue), bValue, newDis[0])
-    if (2*aValue)/gcf > 1:
-        print('root 1: ' + '(' + str(int(-bValue/gcf)) + ' - ' + str(int(newDis[0]/gcf)) + '*sqrt' + str(int(newDis[1])) + ')/' + str(int((2*aValue)/gcf)))
+    neg = ''
+    if aValue < 0:
+        aValue = -aValue
+        neg = '-'
+    bozo = newDis[0]/gcf
+    if bozo == 1:
+        bozo = ''
+    if (2*abs(aValue))/gcf > 1:
+        print('root 1: ' + neg + '(' + str(int(-bValue/gcf)) + ' - ' + str(bozo) + '*sqrt' + str(int(newDis[1])) + ')/' + str(int((2*aValue)/gcf)))
+        print('root 2: ' + neg + '(' + str(int(-bValue/gcf)) + ' + ' + str(bozo)+'*sqrt' + str(int(newDis[1])) + ')/' + str(int((2*aValue)/gcf)))
         
