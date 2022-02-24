@@ -122,6 +122,10 @@ if isUnFactorable:
     if discriminant == False:
         sys.exit('no solutions')
     def simplifyDiscriminant(a, b, dis):
+        '''
+        input: a and b values, discriminant
+        output: symplified radical
+        '''
         squareList = [1]
         squareFactors = []
         mult = 1
