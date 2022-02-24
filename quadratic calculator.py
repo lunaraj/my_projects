@@ -58,7 +58,7 @@ def factor(aValue, bValue, cValue, var):
             factor2 = factorMult[random.randint(0,length-1)]
             guesses += 1
         if guesses > abs(multValue*100):
-            print('\n\n\n\ncannot be factored')
+            print('\n\n\nfactored form: none')
             return True
     #uses x method to divide factors
     divisor = aValue
@@ -144,7 +144,7 @@ if isUnFactorable:
     if bozo == 1:
         bozo = ''
     else:
-        bozo = '*' + str(bozo)
+        bozo = str(int(bozo)) + '*'
     if (2*abs(aValue))/gcf > 1:
         print('root 1: ' + neg + '(' + str(int(-bValue/gcf)) + ' - ' + str(bozo) + 'sqrt' + str(int(newDis[1])) + ')/' + str(int((2*aValue)/gcf)))
         print('root 2: ' + neg + '(' + str(int(-bValue/gcf)) + ' + ' + str(bozo)+'sqrt' + str(int(newDis[1])) + ')/' + str(int((2*aValue)/gcf)))
